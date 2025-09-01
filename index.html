@@ -1,147 +1,327 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>O Diário de Anne Frank e as Ditaduras Atuais</title>
-    <style>
-        body {
-            font-family: 'Inter', sans-serif; /* Usando Inter como solicitado */
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-            line-height: 1.6;
-        }
-        header {
-            background-color: #004d99;
-            color: #fff;
-            text-align: center;
-            padding: 1em 0;
-            border-bottom-left-radius: 8px; /* Cantos arredondados */
-            border-bottom-right-radius: 8px; /* Cantos arredondados */
-        }
-        header h1 {
-            margin: 0;
-            font-size: 2.5em;
-        }
-        .container {
-            width: 80%;
-            max-width: 960px; /* Limite de largura para desktop */
-            margin: auto;
-            overflow: hidden;
-            padding: 2em 0;
-        }
-        .section {
-            background-color: #fff;
-            padding: 2em;
-            margin-bottom: 2em;
-            border-radius: 8px; /* Cantos arredondados */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .section h2 {
-            color: #004d99;
-            border-bottom: 2px solid #004d99;
-            padding-bottom: 0.5em;
-            margin-top: 0;
-        }
-        .quote {
-            font-style: italic;
-            border-left: 4px solid #ffcc00;
-            padding-left: 1em;
-            margin: 1em 0;
-            background-color: #f9f9f9;
-            border-radius: 4px; /* Cantos arredondados */
-            padding: 1em;
-        }
-        .quote p {
-            margin: 0;
-        }
-        .image-container {
-            text-align: center;
-            margin: 2em 0;
-        }
-        .image-container img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px; /* Cantos arredondados */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        footer {
-            text-align: center;
-            padding: 1em 0;
-            background-color: #333;
-            color: #fff;
-            border-top-left-radius: 8px; /* Cantos arredondados */
-            border-top-right-radius: 8px; /* Cantos arredondados */
-        }
-
-        /* Responsividade para telas menores */
-        @media (max-width: 768px) {
-            .container {
-                width: 95%;
-                padding: 1em 0;
-            }
-            header h1 {
-                font-size: 2em;
-            }
-            .section {
-                padding: 1.5em;
-            }
-        }
-    </style>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>O Diário de Anne Frank — Projeto</title>
+  <meta name="description" content="Site escolar sobre O Diário de Anne Frank: quem era, histórico, curiosidades e trechos para estudo.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#f6f7fb;
+      --card:#ffffff;
+      --primary:#2b4162;
+      --accent:#b86b6b;
+      --muted:#6b7280;
+      --radius:12px;
+      --glass: rgba(255,255,255,0.6);
+      font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *, *:before, *:after { box-sizing:border-box }
+    body{
+      margin:0;
+      background:linear-gradient(180deg, var(--bg), #eef2f7);
+      color:var(--primary);
+      -webkit-font-smoothing:antialiased;
+      line-height:1.6;
+    }
+    .wrap{
+      max-width:1000px;
+      margin:28px auto;
+      padding:0 20px;
+    }
+    header{
+      display:flex;
+      gap:20px;
+      align-items:center;
+    }
+    .logo{
+      display:flex;
+      flex-direction:column;
+    }
+    .logo h1{
+      margin:0;
+      font-size:20px;
+      letter-spacing:0.3px;
+    }
+    .logo p{
+      margin:2px 0 0;
+      font-size:12px;
+      color:var(--muted);
+    }
+    nav{
+      margin-top:18px;
+      display:flex;
+      gap:8px;
+      flex-wrap:nowrap;
+      overflow-x:auto;
+      padding-bottom:10px;
+    }
+    .tab{
+      background:var(--card);
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid rgba(43,65,98,0.06);
+      cursor:pointer;
+      transition:transform .15s ease,box-shadow .15s;
+      flex-shrink:0;
+    }
+    .tab:hover{
+      transform:translateY(-3px);
+      box-shadow:0 6px 16px rgba(43,65,98,0.06);
+    }
+    .tab:focus{
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+    .tab.active{
+      background:linear-gradient(90deg, rgba(43,65,98,0.95), rgba(43,65,98,0.85));
+      color:white;
+    }
+    main{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns:1fr 320px;
+      gap:20px;
+    }
+    .card{
+      background:var(--card);
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow:0 6px 20px rgba(35,47,63,0.05);
+    }
+    .content{
+      min-height:420px;
+      padding:6px 18px;
+    }
+    h2{
+      margin:18px 0 8px;
+      font-size:20px;
+    }
+    p{
+      color:var(--muted);
+      line-height:1.55;
+      margin-top:10px;
+    }
+    p:first-of-type {
+      margin-top:0;
+    }
+    aside .card{
+      position:sticky;
+      top:28px;
+    }
+    .meta{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:8px;
+    }
+    .meta div{
+      background:var(--glass);
+      padding:8px;
+      border-radius:10px;
+      font-size:13px;
+      color:var(--primary);
+    }
+    .timeline{
+      list-style:none;
+      margin-top:10px;
+      padding-left:0;
+    }
+    .timeline li{
+      margin:10px 0;
+      padding-left:12px;
+      position:relative;
+      color:var(--muted);
+    }
+    .timeline li:before{
+      content:'';
+      position:absolute;
+      left:0;
+      top:8px;
+      width:6px;
+      height:6px;
+      border-radius:50%;
+      background:var(--accent);
+    }
+    .curios{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+      margin-top:10px;
+    }
+    .chip{
+      background:linear-gradient(180deg,#fff, #fbfbfb);
+      padding:10px;
+      border-radius:10px;
+      border:1px solid rgba(0,0,0,0.03);
+      font-size:14px;
+    }
+    footer{
+      margin-top:22px;
+      text-align:center;
+      color:var(--muted);
+      font-size:13px;
+      padding:0 20px;
+    }
+    a.slink{
+      display:inline-block;
+      margin-top:10px;
+      text-decoration:none;
+      padding:8px 12px;
+      border-radius:8px;
+      border:1px solid rgba(43,65,98,0.08);
+      color:var(--primary);
+    }
+    /* small screens */
+    @media (max-width:880px){
+      main{
+        grid-template-columns:1fr;
+      }
+      aside{
+        order:2;
+      }
+      .logo{
+        flex-direction:row;
+        align-items:center;
+      }
+      nav{
+        overflow-x:auto;
+        scrollbar-width: none;
+      }
+      nav::-webkit-scrollbar {
+        display: none;
+      }
+      .content {
+        padding: 18px;
+      }
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
 </head>
 <body>
-
+  <div class="wrap">
     <header>
-        <h1>O Diário de Anne Frank: Um Eco no Tempo</h1>
-        <p>A luta contra a opressão, ontem e hoje</p>
+      <div class="logo">
+        <h1>O Diário de Anne Frank</h1>
+        <p>Trabalho escolar — resumo, contexto e curiosidades</p>
+      </div>
     </header>
-
-    <div class="container">
-        
-        <div class="section">
-            <h2>Quem foi Anne Frank?</h2>
-            <p><strong>Anne Frank</strong> foi uma adolescente judia alemã que, junto com sua família, se escondeu em Amsterdã durante a ocupação nazista da Holanda. De 1942 a 1944, eles viveram em um anexo secreto, documentando em seu diário as tensões, os medos e as pequenas esperanças da vida em confinamento.</p>
-            <p>Seu diário, publicado postumamente, se tornou um dos livros mais importantes do século XX, oferecendo um olhar íntimo e humano sobre o Holocausto. Ele não apenas narra a perseguição e o terror, mas também os sonhos, as reflexões e a força de uma jovem em meio à adversidade.</p>
+    <nav id="nav">
+      <button class="tab active" data-target="home">Início</button>
+      <button class="tab" data-target="quem">Quem era</button>
+      <button class="tab" data-target="resumo">O que aconteceu</button>
+      <button class="tab" data-target="historia">Linha do tempo</button>
+      <button class="tab" data-target="curiosidades">Curiosidades</button>
+      <button class="tab" data-target="videos">Vídeos & Docs</button>
+      <button class="tab" data-target="bibliografia">Bibliografia</button>
+      <button class="tab" data-target="Atualidade">Eco do diário na atualidade</button>
+    </nav>
+    <main>
+      <section class="card content" id="home">
+        <h2>Apresentação</h2>
+        <p>Este site resume de forma clara e respeitosa o livro <em>O Diário de Anne Frank</em>, apresentando biografia, contexto histórico, linha do tempo com os fatos principais, curiosidades e trechos para estudo. O objetivo é ajudar na apresentação escolar de forma simples, organizada e visualmente agradável.</p>
+        <h2 style="margin-top:18px">Como usar este site</h2>
+        <p>Clique nas abas acima para navegar entre os tópicos. Cada seção foi escrita em linguagem acessível para facilitar a leitura e a apresentação em sala. Se quiser, você pode copiar e colar partes do texto para seu trabalho — apenas cite a fonte conforme as regras da sua escola.</p>
+      </section>
+      <aside>
+        <div class="card">
+          <strong>Informações rápidas</strong>
+          <div class="meta">
+            <div>Autora: Anne Frank</div>
+            <div>Tipo: Diário / Memórias</div>
+            <div>Local: Amsterdã (Países Baixos)</div>
+          </div>
+          <ul class="timeline" style="margin-top:12px">
+            <li><strong>1929</strong> — Nasce Anne Frank em Frankfurt, Alemanha.</li>
+            <li><strong>1940</strong> — A Alemanha ocupa os Países Baixos.</li>
+            <li><strong>1942</strong> — A família Frank vai para o esconderijo secreto.</li>
+            <li><strong>1944</strong> — O esconderijo é descoberto; Anne e família são deportados.</li>
+          </ul>
+          <a class="slink" href="#historia">Ver linha do tempo</a>
         </div>
+      </aside>
+      <section class="card hidden" id="quem">
+        <h2>Quem era Anne Frank?</h2>
+        <p>Anne Frank nasceu em 12 de junho de 1929, em Frankfurt am Main, Alemanha. Era uma menina judia que se mudou com a família para Amsterdã para fugir do crescente antissemitismo na Alemanha nazista. Anne gostava de escrever; recebeu um diário de presente aos 13 anos e começou a registrar seus pensamentos, medos e sonhos.</p>
+        <p>Durante a ocupação nazista, a família Frank viveu escondida em um anexo secreto por aproximadamente dois anos. O diário de Anne se tornou, depois da guerra, um dos documentos mais conhecidos que mostram a vida de civis sob perseguição e a voz humana por trás das estatísticas históricas.</p>
+      </section>
+      <section class="card hidden" id="resumo">
+        <h2>O que aconteceu — Resumo dos fatos</h2>
+        <p>Em 1940, a Alemanha ocupou os Países Baixos. Em julho de 1942, para escapar das deportações, a família Frank entrou no esconderijo anexo ao prédio onde o pai, Otto Frank, trabalhava. Outras quatro pessoas juntaram-se a eles: a família Van Pels (no livro chamada de Van Daan) e Fritz Pfeffer (chamado de Albert Dussel no diário).</p>
+        <p>No anexo, os ocupantes viviam em silêncio quase total durante o dia, com rotinas estritas para evitar que trabalhadores do prédio os notassem. Anne escreveu regularmente no diário, relatando a vida cotidiana, conflitos, esperanças e seu desenvolvimento pessoal. Em agosto de 1944, o anexo foi denunciado — os moradores foram presos e deportados para campos de concentração. Anne morreu no campo de Bergen-Belsen em 1945. Apenas Otto Frank, seu pai, sobreviveu para publicar o diário.</p>
+      </section>
+      <section class="card hidden" id="historia">
+        <h2>Linha do Tempo (resumida)</h2>
+        <ul style="padding-left:16px;color:var(--muted)">
+          <li><strong>1929</strong> — Nascimento de Anne Frank.</li>
+          <li><strong>1933–1939</strong> — A família enfrenta perseguições na Alemanha; decide emigrar.</li>
+          <li><strong>1940</strong> — Invasão nazista dos Países Baixos.</li>
+          <li><strong>1942</strong> — 6 de julho: família Frank entra no esconderijo (anexo secreto).</li>
+          <li><strong>1942–1944</strong> — Período de vida no anexo; Anne escreve o diário.</li>
+          <li><strong>4 de agosto de 1944</strong> — Prisão e deportação dos ocupantes do anexo.</li>
+          <li><strong>1945</strong> — Fim da guerra; Otto Frank encontra e publica o diário.</li>
+        </ul>
+      </section>
 
-        <div class="image-container">
-            <img src="https://placehold.co/600x400/004d99/ffffff?text=Anne%20Frank" onerror="this.onerror=null; this.src='https://upload.wikimedia.org/wikipedia/commons/e/e1/Anne_Frank.jpg'" alt="Foto de Anne Frank">
-            <p>Anne Frank em 1940, aos 11 anos.</p>
+      <section class="card hidden" id="curiosidades">
+        <h2>Curiosidades</h2>
+        <div class="curios">
+          <div class="chip"><strong>O diário foi preservado:</strong> Depois da prisão, Miep Gies guardou o diário. Após a guerra, entregou-o a Otto Frank.</div>
+          <div class="chip"><strong>Nome real do livro:</strong> Publicado originalmente em holandês como <em>Het Achterhuis</em> (O Anexo).</div>
+          <div class="chip"><strong>Idade:</strong> Anne tinha 13–15 anos durante a escrita do diário.</div>
+          <div class="chip"><strong>Representação:</strong> O diário virou peça de teatro, filmes e estudos para ensino sobre o Holocausto.</div>
         </div>
-
-        <div class="section">
-            <h2>O Contexto da Ditadura Nazista</h2>
-            <p>O <strong>regime nazista de Hitler</strong>, que governou a Alemanha de 1933 a 1945, foi uma das ditaduras mais brutais da história. Caracterizado por um nacionalismo extremo, racismo (especialmente o antissemitismo), perseguição a minorias e um controle total sobre a sociedade, o nazismo levou à Segunda Guerra Mundial e ao Holocausto, o genocídio de milhões de judeus e outras vítimas.</p>
-            <div class="quote">
-                <p>"Apesar de tudo, ainda acredito na bondade inerente às pessoas." - Anne Frank</p>
-            </div>
-            <p>A história de Anne e sua família é um microcosmo desse período. O medo de serem descobertos, a privação de liberdade e a perda de direitos básicos são reflexos diretos da opressão exercida pela ditadura nazista. Seu diário é um testemunho da resistência humana e da esperança, mesmo nos momentos mais sombrios.</p>
-        </div>
-
-        <div class="section">
-            <h2>O Eco de Anne Frank nas Ditaduras Atuais</h2>
-            <p>Apesar de décadas terem se passado, os ecos da história de Anne Frank ainda ressoam em diferentes partes do mundo. A luta por direitos, a perseguição a minorias e a opressão de governos autoritários não são fatos apenas do passado. Várias ditaduras ou regimes opressivos ainda existem hoje, e a experiência de Anne Frank nos ajuda a entender as consequências disso.</p>
-            <h3>1. Perseguição e Confinamento</h3>
-            <p>Assim como Anne Frank e sua família foram forçados a se esconder, hoje, em países como <strong>Coreia do Norte</strong> ou sob a repressão em <strong>Myanmar</strong>, dissidentes políticos, jornalistas e minorias étnicas são perseguidos, presos ou forçados a viverem no anonimato ou em campos de trabalho forçado.</p>
-            <h3>2. Falta de Liberdade e Censura</h3>
-            <p>O nazismo controlava rigidamente a imprensa, a arte e a educação. Da mesma forma, em regimes como o da <strong>China</strong>, a internet é censurada, a imprensa é controlada pelo Estado e a liberdade de expressão é severamente restrita. As pessoas são impedidas de ter acesso a informações que questionem o governo, assim como os moradores da Holanda ocupada eram privados de notícias verdadeiras.</p>
-            <h3>3. A Desumanização do "Outro"</h3>
-            <p>O nazismo se baseava na ideia de que os judeus eram uma "raça inferior", justificando sua perseguição. Esse mesmo mecanismo de desumanização ocorre em várias ditaduras, onde minorias são demonizadas para que a violência e a repressão contra elas sejam justificadas. Isso pode ser visto em conflitos étnicos ou na perseguição a grupos religiosos em diversas partes do mundo.</p>
-        </div>
-
-        <div class="section">
-            <h2>Conclusão</h2>
-            <p>O Diário de Anne Frank é mais do que a história de uma única menina; é um alerta sobre os perigos da tirania e da intolerância. Ao compararmos sua experiência com os desafios de hoje, percebemos que a luta pela <strong>liberdade</strong>, pelos <strong>direitos humanos</strong> e contra o <strong>preconceito</strong> é uma batalha contínua. A voz de Anne, vinda de um anexo secreto, nos lembra da importância de nunca esquecermos o passado para que possamos defender um futuro mais justo e livre para todos.</p>
-        </div>
-
-    </div>
-
+        <h3 style="margin-top:12px">Sugestão para apresentação</h3>
+        <p>Use imagens do anexo (se disponíveis), destaque a linha do tempo e leia um breve trecho em voz alta (máx. 1 minuto). Explique a importância histórica e humana do diário — por que uma história pessoal ajuda a entender um evento coletivo?</p>
+      </section>
+      <section class="card hidden" id="videos">
+        <h2>Vídeos e Documentários</h2>
+        <p>Para aprofundar seu conhecimento sobre Anne Frank, seu diário e o contexto histórico do Holocausto, confira alguns documentários e vídeos selecionados:</p>
+        <ul style="color:var(--muted)">
+          
+            <ul>
+              <li><a href="https://www.youtube.com/watch?v=O-aGY4oI1Dc" target="_blank">A história de Anne Frank </a></li>
+             
+            </ul>
+          </li>
+         
+        </ul>
+      </section>
+      <section class="card hidden" id="bibliografia">
+        <h2>Bibliografia & Referências</h2>
+        <p>Para aprofundar seu trabalho, procure as seguintes fontes (sugestões gerais):</p>
+        <ul style="color:var(--muted)">
+          <li>Edições do <em>O Diário de Anne Frank</em> — prefira edições com notas e introdução editorial.</li>
+          <li>Livros e documentários sobre o Holocausto e a ocupação nazista nos Países Baixos.</li>
+          <li>Materiais escolares e guias didáticos sobre memória e direitos humanos.</li>
+        </ul>
+        <p style="margin-top:12px">Se você quiser, eu posso adicionar uma lista com títulos específicos, links ou imagens do anexo para deixar o site mais completo.</p>
+      </section>
+    </main>
     <footer>
-        <p>Trabalho escolar - Baseado em "O Diário de Anne Frank" e estudos sobre ditaduras.</p>
+      <div style="max-width:760px;margin:0 auto">Feito para apresentação escolar</div>
     </footer>
-
+  </div>
+  <script>
+    const tabs = document.querySelectorAll('.tab');
+    const sections = document.querySelectorAll('main section.card');
+    function show(id){
+      sections.forEach(s => {
+        if(s.id === id){
+          s.classList.remove('hidden');
+        } else {
+          s.classList.add('hidden');
+        }
+      });
+      tabs.forEach(t => t.classList.toggle('active', t.dataset.target === id));
+      window.scrollTo({top:0,behavior:'smooth'});
+    }
+    tabs.forEach(t => t.addEventListener('click', () => show(t.dataset.target)));
+    show('home');
+  </script>
 </body>
 </html>
